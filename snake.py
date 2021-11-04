@@ -1,10 +1,10 @@
 import pygame
 class Snake():
-    def __init__(self, color=None, bodyColor=None, initialPosition=None, direction=None):
+    def __init__(self, color: tuple = None, bodyColor: tuple = None, initialPosition: tuple = None, direction: list = None, unitSize: int = None) -> None:
         if color:
             self.color = color
         else:
-            self.color = (0, 255, 0) #colors are defined using rgb
+            self.color = (0, 255, 0) # colors are defined using rgb
         
         if bodyColor:
             self.bodyColor = bodyColor
@@ -19,8 +19,11 @@ class Snake():
         if direction:
             self.direction = direction
         else:
-            self.direction = [0, 0]
-        self.headSize = 20
+            self.direction = [0, 0]     # only indicates which way the snake is going
+
+        if not unitSize: unitSize = 20
+
+        self.headSize = unitSize
         self.bodyList = []
         self.head = pygame.Rect(initialPosition, (self.headSize, self.headSize))
 

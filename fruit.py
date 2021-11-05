@@ -29,3 +29,4 @@ class Fruit():
             random.randrange(0, yLimit, step)+self.spacing,
         )
         self.body.topleft = newPosition
+

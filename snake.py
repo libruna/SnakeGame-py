@@ -1,6 +1,6 @@
 import pygame
 class Snake():
-    def __init__(self, color: tuple = None, bodyColor: tuple = None, initialPosition: tuple = None, direction: list = None, unitSize: int = None) -> None:
+    def __init__(self, color: tuple = None, bodyColor: tuple = None, initialPosition: tuple = None, unitSize: int = None) -> None:
         if color:
             self.color = color
         else:
@@ -16,10 +16,8 @@ class Snake():
         else:
             self.initialPosition = (0, 0)
 
-        if direction:
-            self.direction = direction
-        else:
-            self.direction = [0, 0]     # only indicates which way the snake is going
+        # only indicates which way the snake is going, starts parked in the center
+        self.orientation = [0, 0]     
 
         if not unitSize: unitSize = 20
 
@@ -37,8 +35,8 @@ class Snake():
             for i in range(1, len(self.bodyList)):
                 self.bodyList[-i].center = self.bodyList[-i-1].center
             self.bodyList[0].center = self.head.center
-        self.head.centerx = self.head.centerx + self.direction[0]*self.headSize
-        self.head.centery = self.head.centery + self.direction[1]*self.headSize
+        self.head.centerx = self.head.centerx + self.orientation[0]*self.headSize
+        self.head.centery = self.head.centery + self.orientation[1]*self.headSize
         
     def addBodypart(self) -> None:
         newBody = pygame.Rect((0,0), (self.headSize/2, self.headSize/2))
@@ -62,8 +60,16 @@ class Snake():
                 ]
         else:
             newBody.center = [
-                self.head.centerx - self.direction[0]*self.headSize,
-                self.head.centery - self.direction[1]*self.headSize
+                self.head.centerx - self.orientation[0]*self.headSize,
+                self.head.centery - self.orientation[1]*self.headSize
             ] # first increment depends on direction
         self.bodyList.append(newBody)
+    
+    def changeOrientation(self, orientation: list = None) -> None:
+        if orientation:
+            selfOpposite = [ -self.orientation[0], -self.orientation[1] ]
+            if orientation != selfOpposite:
+                self.orientation = orientation
+
+
 

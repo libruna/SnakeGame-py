@@ -1,3 +1,4 @@
+# Just to name the directions passed to snake via controller
 LEFT = [-1, 0]
 RIGHT = [1, 0]
 UP = [0, -1]

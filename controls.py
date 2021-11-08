@@ -1,6 +1,7 @@
 import pygame, snake, sys
 from orientation import LEFT, RIGHT, UP, DOWN
 
+# Receives a snake object and handles key events for it, passing changes directly to snake
 class Controller():
     def __init__(self, snake: snake.Snake, eventList: list) -> None:
         for event in eventList:

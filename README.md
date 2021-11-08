@@ -4,6 +4,8 @@
 
 - O desenvolvimento foi feito de maneira mais desacoplada, permitindo mais facilmente modificações e a implementação de features. Por esse motivo, o projeto foi orientado a objetos.
 
+- A explicação mais detalhada do código foi colocada em forma de comentários no próprio código.
+
 - É recomendado o uso de virtual env para instalar as bibliotecas
 ### Recomendações
 | Programa | Versão |

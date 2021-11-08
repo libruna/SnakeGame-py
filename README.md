@@ -2,10 +2,7 @@
 ## *Projeto final da disciplina de APC 2021/1*
 ##### Ciclo básico de engenharia na Universidade de Brasília, campus Gama
 
-### Notas
-- Escolhi python pela rapidez e por ser *cross-platform*, implementar o jogo em C++ e OpenGL demandaria mais tempo
-
-- O desenvolvimento foi feito de maneira mais desacoplada, permitindo mais facilmente modificações e a implementação de features
+- O desenvolvimento foi feito de maneira mais desacoplada, permitindo mais facilmente modificações e a implementação de features. Por esse motivo, o projeto foi orientado a objetos.
 
 - É recomendado o uso de virtual env para instalar as bibliotecas
 ### Recomendações

@@ -3,7 +3,7 @@ import pygame, random
 # Fruit colors to be used, score depends on color
 GOLDEN = (219, 165, 20)
 STANDARD = (255, 102, 99)
-TOXIC = (177, 219, 48)
+TOXIC = (217, 40, 255)
 
 class Fruit():
     # Creates the fruit object based on screen unitSize and fruitSize given

@@ -12,6 +12,13 @@ class Game():
         self.clock = pygame.time.Clock()
         self.setupScreen(width, height, unitSize)
 
+        pygame.mixer.init()
+        #Check if file exist
+        import os.path
+        if os.path.isfile("sound/start.wav"):
+           pygame.mixer.music.load("sound/start.wav")
+           pygame.mixer.music.play()
+
         snake = Snake(initialPosition = self.unitCenter, unitSize = self.unitSize)
         
         fruit = Fruit(unitSize = self.unitSize)

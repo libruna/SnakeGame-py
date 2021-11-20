@@ -1,4 +1,25 @@
 import pygame
+
+def death():
+    pygame.mixer.init()
+    #Check if file exist
+    import os.path
+    if os.path.isfile("sound/death.wav"):
+       pygame.mixer.music.load("sound/death.wav")
+       pygame.mixer.music.play()
+
+    #wait some seconds before the end of the game
+    pygame.time.wait(3200)
+    #Close pygame window
+    pygame.quit()
+    
+    #Start the game again
+    from game import Game
+    Game(FPS = 15)
+
+    #Quit current session
+    quit()
+
 class Snake():
     # Creates snake taking some parameters like position, size, color etc.
     # Note this only instantiates the object in memory, needing to be rendered to see effects
@@ -30,6 +51,10 @@ class Snake():
     def render(self, screen: pygame.Surface) -> None:
     # Draws snake on screen, managing each body part too
         pygame.draw.rect(screen, self.color, self.head)
+        
+        #If the snake go to out of the screen, game over
+        if (self.head[0] < 0 or self.head[0] > 719 or self.head[1] < 0 or self.head[1] > 479) :
+            death()
         for bodypart in self.bodyList:
             pygame.draw.rect(screen, self.bodyColor, bodypart)
 
@@ -55,9 +80,25 @@ class Snake():
         # If the score was negative, decrease the snake's length
         if quantity < 0:
             for i in range(abs(quantity)):
-                self.bodyList.pop()
+                if self.bodyList:
+                   self.bodyList.pop()
+                   pygame.mixer.init()
+                   #Check if file exist
+                   import os.path
+                   if os.path.isfile("sound/damage.wav"):
+                      pygame.mixer.music.load("sound/damage.wav")
+                      pygame.mixer.music.play()
+                else:
+                    death()
+                    
         else:
         # If the score was greater than 1, increase the snake's length accordingly
+            pygame.mixer.init()
+            #Check if file exist
+            import os.path
+            if os.path.isfile("sound/eat.wav"):
+               pygame.mixer.music.load("sound/eat.wav")
+               pygame.mixer.music.play()
             for i in range(quantity):
                 newBody = pygame.Rect((0,0), (self.headSize/2, self.headSize/2))
                 reference = self.head
